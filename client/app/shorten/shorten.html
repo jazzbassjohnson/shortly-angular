@@ -1,10 +1,30 @@
-<div id='container'>
+
 <!-- Your code here -->
-<h1>Add Links</h1>
-<form name='addLinksForm' ng-submit='addLink()'>
-  <input type='text' ng-model='link.url' placeholder="http://www.example.com">
-</form>
-<h1 ng-model='error'>{{error}}</h1>
+<div class="aside" tabindex="-1" role="dialog" ng-controller="ShortenController">
+  <div class="aside-dialog">
+    <div class="aside-content">
+      <div class="aside-body">
+      <!-- form name='addLinksForm' ng-submit='addLink()'>
+        <input name='urlInput' type='url' ng-model='link.url' placeholder="http://www.example.com" required
+        ng-class="{'has-error': addLinksForm.urlInput.$invalid}"> -->
+        <form name="addLinksForm" novalidate >
+          <fieldset>
+            <legend>Add Link</legend>
+              <input name="input" type="url" ng-model="link.url"
+                placeholder="http://www.example.com" required autofocus>
+              <div
+                ng-show="addLinksForm.input.$dirty && addLinksForm.input.$invalid">
+                <small>Please type a valid url!</small>
+              </div>
+            </fieldset>
+        </form>
+      </div>
+      <div class="aside-footer">
+        <button type="submit" class="btn btn-success" ng-disabled="addLinksForm.input.$invalid" ng-click="addLink()">Add Link</button>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 
